@@ -12,3 +12,4 @@ class Student(models.Model):
     #views - Application Logic
     #Template - HTML User Interface
     #URL - connects the browser request to views
+    

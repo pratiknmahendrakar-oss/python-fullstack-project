@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #6dd5ed);
+            background-size: 300% 300%;
+            animation: gradient 8s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .register-box {
+            width: min(100%, 450px);
+            padding: clamp(25px, 5vw, 40px);
+            background: rgba(255,255,255,0.17);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 22px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            animation: slideUp 1s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            font-size: clamp(24px, 5vw, 32px);
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: white;
+            margin-bottom: 25px;
+            font-size: clamp(13px, 2.5vw, 16px);
+        }
+
+        form p {
+            margin-bottom: 18px;
+        }
+
+        form label {
+            display: block;
+            color: white;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            outline: none;
+            background: white;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        form input:focus, form select:focus, form textarea:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 12px rgba(255,215,0,0.5);
+        }
+
+        .errorlist {
+            color: white;
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(221,36,118,0.4);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 25px;
+            font-size: 12px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="register-box">
+
+        <h2>🎓 Student Registration</h2>
+
+        <p class="subtitle">
+            Join our student community today!
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">Register Now →</button>
+        </form>
+
+        <div class="footer">
+            © 2026 Student Portal | All Rights Reserved
+        </div>
+
+    </div>
+
+</body>
+</html>
